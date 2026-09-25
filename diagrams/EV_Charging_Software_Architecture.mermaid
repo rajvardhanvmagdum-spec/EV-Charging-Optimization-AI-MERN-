@@ -1,0 +1,97 @@
+flowchart TD
+    User["👤 User"]
+
+    subgraph FE["🖥️ Frontend Dashboard (React)"]
+        direction TB
+        FE1[User Login]
+        FE2[Charging Station Status]
+        FE3[Live Monitoring]
+        FE4[Charging History]
+        FE5[AI Recommendation Display]
+    end
+
+    subgraph BE["⚙️ Spring Boot Backend"]
+        direction TB
+        BE1[REST API]
+        BE2[Authentication]
+        BE3[Charging Session Management]
+        BE4[Sensor Data Processing]
+        BE5[AI Integration]
+        BE6[User Management]
+    end
+
+    subgraph DB["🗄️ MySQL Database"]
+        direction TB
+        DB1[(Users)]
+        DB2[(Charging Stations)]
+        DB3[(Charging Sessions)]
+        DB4[(Sensor Data)]
+        DB5[(AI Predictions)]
+    end
+
+    subgraph AI["🤖 AI Module (Python)"]
+        direction TB
+        AI1[Dataset Processing]
+        AI2[Data Cleaning]
+        AI3[Feature Engineering]
+        AI4[Machine Learning Model]
+        AI5[Prediction Engine]
+        AI6[Intelligent Charging Recommendation]
+        AI1 --> AI2 --> AI3 --> AI4 --> AI5 --> AI6
+    end
+
+    subgraph ESP["📶 ESP32 IoT Module"]
+        direction TB
+        ESP1[RFID Authentication]
+        ESP2[Current Sensor Data]
+        ESP3[Voltage Sensor Data]
+        ESP4[Relay Control]
+        ESP5[OLED Display Update]
+    end
+
+    RFID[RFID Reader]
+    SENS[Current & Voltage Sensors]
+    RELAY[Relay Module]
+    PORT1[Charging Port 1]
+    PORT2[Charging Port 2]
+
+    %% Main vertical data flow
+    User -->|Access via Browser| FE
+    FE -->|REST API Calls HTTPS| BE
+    BE -->|JDBC / JPA| DB
+
+    %% Backend <-> AI Module
+    BE <-->|Live Sensor Data / Predictions| AI
+
+    %% Backend <-> ESP32
+    BE <-->|Commands / Sensor Data via WiFi| ESP
+
+    %% Database -> AI (historical data)
+    DB -.->|Historical Charging Data| AI
+
+    %% ESP32 -> physical peripherals
+    ESP --> RFID
+    RFID --> SENS
+    SENS --> RELAY
+    RELAY --> PORT1
+    RELAY --> PORT2
+
+    classDef frontend fill:#BBDEFB,stroke:#1565C0,color:#0D3C6B
+    classDef backend fill:#A5D6A7,stroke:#2E7D32,color:#1B5E20
+    classDef database fill:#FFCC80,stroke:#E65100,color:#8A4400
+    classDef aimodule fill:#CE93D8,stroke:#6A1B9A,color:#4A148C
+    classDef iot fill:#B0BEC5,stroke:#455A64,color:#263238
+    classDef userNode fill:#FFFFFF,stroke:#333333,color:#1A1A1A
+
+    class User userNode
+    class FE1,FE2,FE3,FE4,FE5 frontend
+    class BE1,BE2,BE3,BE4,BE5,BE6 backend
+    class DB1,DB2,DB3,DB4,DB5 database
+    class AI1,AI2,AI3,AI4,AI5,AI6 aimodule
+    class ESP1,ESP2,ESP3,ESP4,ESP5,RFID,SENS,RELAY,PORT1,PORT2 iot
+
+    style FE fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
+    style BE fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style DB fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style AI fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+    style ESP fill:#ECEFF1,stroke:#455A64,stroke-width:2px

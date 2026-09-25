@@ -1,0 +1,64 @@
+erDiagram
+    Users ||--o{ Charging_Sessions : "has"
+    Charging_Stations ||--o{ Charging_Ports : "contains"
+    Charging_Ports ||--o{ Charging_Sessions : "used in"
+    Charging_Sessions ||--o{ Sensor_Data : "generates"
+    Charging_Sessions ||--|| AI_Predictions : "has"
+
+    Users {
+        attribute user_id PK
+        attribute full_name
+        attribute email
+        attribute phone_number
+        attribute rfid_card_id
+        attribute vehicle_number
+        attribute password
+        attribute created_at
+    }
+
+    Charging_Stations {
+        attribute station_id PK
+        attribute station_name
+        attribute location
+        attribute total_ports
+        attribute available_ports
+        attribute status
+    }
+
+    Charging_Ports {
+        attribute port_id PK
+        attribute station_id FK
+        attribute port_number
+        attribute port_status
+        attribute relay_status
+    }
+
+    Charging_Sessions {
+        attribute session_id PK
+        attribute user_id FK
+        attribute port_id FK
+        attribute start_time
+        attribute end_time
+        attribute charging_duration
+        attribute energy_consumed
+        attribute total_cost
+        attribute session_status
+    }
+
+    Sensor_Data {
+        attribute sensor_id PK
+        attribute session_id FK
+        attribute current
+        attribute voltage
+        attribute temperature
+        attribute timestamp
+    }
+
+    AI_Predictions {
+        attribute prediction_id PK
+        attribute session_id FK
+        attribute recommended_port
+        attribute estimated_wait_time
+        attribute confidence_score
+        attribute prediction_time
+    }

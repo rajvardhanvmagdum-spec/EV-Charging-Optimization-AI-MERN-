@@ -1,0 +1,163 @@
+<svg viewBox="0 0 1200 980" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333333"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#999999"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="980" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#1A1A1A">AI-Based Smart EV Charging Station — System Architecture</text>
+
+  <!-- ================= LAYER CONTAINERS ================= -->
+  <!-- User layer -->
+  <rect x="40" y="70" width="200" height="140" rx="8" fill="#F5F5F5" stroke="#666666" stroke-dasharray="6,4"/>
+  <text x="140" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#333333">User Interaction</text>
+
+  <!-- Hardware layer -->
+  <rect x="280" y="70" width="700" height="360" rx="8" fill="#E8F0FE" stroke="#5B8DEF" stroke-dasharray="6,4"/>
+  <text x="630" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#1A3E8C">Hardware / Embedded Layer (ESP32 Node)</text>
+
+  <!-- Power layer -->
+  <rect x="340" y="290" width="580" height="150" rx="8" fill="#FFF3E0" stroke="#E29A3F" stroke-dasharray="6,4"/>
+  <text x="630" y="312" text-anchor="middle" font-size="13" font-weight="700" fill="#8A5A16">Power Delivery</text>
+
+  <!-- Connectivity layer -->
+  <rect x="530" y="470" width="220" height="90" rx="8" fill="#F5F5F5" stroke="#666666" stroke-dasharray="6,4"/>
+  <text x="640" y="492" text-anchor="middle" font-size="13" font-weight="700" fill="#333333">Connectivity</text>
+
+  <!-- Cloud layer -->
+  <rect x="280" y="600" width="700" height="260" rx="8" fill="#E6F4EA" stroke="#4C9A5B" stroke-dasharray="6,4"/>
+  <text x="630" y="622" text-anchor="middle" font-size="13" font-weight="700" fill="#1E5C2B">Cloud / Backend Layer</text>
+
+  <!-- ================= NODES ================= -->
+  <!-- EV User -->
+  <rect x="70" y="120" width="140" height="60" rx="10" fill="#DAE8FC" stroke="#6C8EBF" stroke-width="1.5"/>
+  <text x="140" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">EV User</text>
+
+  <!-- RFID -->
+  <rect x="330" y="120" width="150" height="60" rx="10" fill="#DAE8FC" stroke="#6C8EBF" stroke-width="1.5"/>
+  <text x="405" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">RFID Reader</text>
+
+  <!-- ESP32 -->
+  <rect x="600" y="200" width="170" height="85" rx="10" fill="#BBDEFB" stroke="#1565C0" stroke-width="2"/>
+  <text x="685" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#0D3C6B">ESP32</text>
+  <text x="685" y="256" text-anchor="middle" font-size="12" fill="#0D3C6B">Microcontroller</text>
+
+  <!-- OLED -->
+  <rect x="850" y="120" width="150" height="60" rx="10" fill="#DAE8FC" stroke="#6C8EBF" stroke-width="1.5"/>
+  <text x="925" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">OLED Display</text>
+
+  <!-- Current Sensors -->
+  <rect x="850" y="205" width="150" height="55" rx="10" fill="#DAE8FC" stroke="#6C8EBF" stroke-width="1.5"/>
+  <text x="925" y="237" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">Current Sensor 1</text>
+
+  <rect x="850" y="275" width="150" height="55" rx="10" fill="#DAE8FC" stroke="#6C8EBF" stroke-width="1.5"/>
+  <text x="925" y="307" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">Current Sensor 2</text>
+
+  <!-- Relay -->
+  <rect x="605" y="360" width="160" height="60" rx="10" fill="#FFE0B2" stroke="#D08A2A" stroke-width="1.5"/>
+  <text x="685" y="395" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">Relay Module</text>
+
+  <!-- Charging Ports -->
+  <rect x="400" y="355" width="150" height="60" rx="10" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.5"/>
+  <text x="475" y="390" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">Charging Port 1</text>
+
+  <rect x="820" y="355" width="150" height="60" rx="10" fill="#FFF2CC" stroke="#D6B656" stroke-width="1.5"/>
+  <text x="895" y="390" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">Charging Port 2</text>
+
+  <!-- WiFi -->
+  <rect x="560" y="505" width="160" height="60" rx="10" fill="#E1D5E7" stroke="#9673A6" stroke-width="1.5"/>
+  <text x="640" y="540" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">WiFi Module</text>
+
+  <!-- Backend -->
+  <rect x="560" y="650" width="200" height="75" rx="10" fill="#C6E5CB" stroke="#4C9A5B" stroke-width="2"/>
+  <text x="660" y="682" text-anchor="middle" font-size="14" font-weight="700" fill="#1E5C2B">Spring Boot Backend</text>
+  <text x="660" y="702" text-anchor="middle" font-size="12" fill="#1E5C2B">(REST API)</text>
+
+  <!-- MySQL -->
+  <rect x="340" y="770" width="170" height="60" rx="10" fill="#D5E8D4" stroke="#4C9A5B" stroke-width="1.5"/>
+  <text x="425" y="805" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">MySQL Database</text>
+
+  <!-- AI Model -->
+  <rect x="770" y="770" width="180" height="60" rx="10" fill="#D5E8D4" stroke="#4C9A5B" stroke-width="1.5"/>
+  <text x="860" y="795" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1A1A">AI Model (Python)</text>
+  <text x="860" y="813" text-anchor="middle" font-size="11" fill="#1A1A1A">Charging Optimization</text>
+
+  <!-- ================= EDGES ================= -->
+  <!-- EV User -> RFID -->
+  <line x1="210" y1="150" x2="330" y2="150" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="270" y="142" text-anchor="middle" font-size="11" fill="#333333">Taps card</text>
+
+  <!-- RFID -> ESP32 -->
+  <path d="M 480,150 L 685,150 L 685,200" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="580" y="142" text-anchor="middle" font-size="11" fill="#333333">UID Data (UART)</text>
+
+  <!-- ESP32 -> OLED -->
+  <path d="M 770,220 L 850,150" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="815" y="175" text-anchor="middle" font-size="11" fill="#333333">Status</text>
+
+  <!-- Current Sensor 1 -> ESP32 -->
+  <line x1="850" y1="232" x2="770" y2="232" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="815" y="224" text-anchor="middle" font-size="11" fill="#333333">Reading</text>
+
+  <!-- Current Sensor 2 -> ESP32 -->
+  <path d="M 850,300 L 770,260" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="815" y="282" text-anchor="middle" font-size="11" fill="#333333">Reading</text>
+
+  <!-- ESP32 -> Relay -->
+  <line x1="685" y1="285" x2="685" y2="360" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="750" y="325" text-anchor="middle" font-size="11" fill="#333333">Control Signal</text>
+
+  <!-- Relay -> Port1 -->
+  <line x1="605" y1="390" x2="550" y2="385" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="580" y="410" text-anchor="middle" font-size="11" fill="#333333">Power ON/OFF</text>
+
+  <!-- Relay -> Port2 -->
+  <line x1="765" y1="390" x2="820" y2="385" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="795" y="410" text-anchor="middle" font-size="11" fill="#333333">Power ON/OFF</text>
+
+  <!-- Port1 -> Sensor1 (measures) -->
+  <path d="M 550,375 L 850,232" fill="none" stroke="#999999" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowGray)"/>
+  <text x="700" y="290" text-anchor="middle" font-size="10" fill="#999999">measures</text>
+
+  <!-- Port2 -> Sensor2 (measures) -->
+  <path d="M 895,355 L 925,330" fill="none" stroke="#999999" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowGray)"/>
+  <text x="935" y="345" text-anchor="middle" font-size="10" fill="#999999">measures</text>
+
+  <!-- ESP32 -> WiFi -->
+  <line x1="685" y1="285" x2="640" y2="505" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="700" y="450" text-anchor="middle" font-size="11" fill="#333333">Sends Data</text>
+
+  <!-- WiFi <-> Backend -->
+  <line x1="640" y1="565" x2="660" y2="650" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="740" y="612" text-anchor="middle" font-size="11" fill="#333333">HTTP / REST API</text>
+
+  <!-- Backend <-> MySQL -->
+  <line x1="600" y1="725" x2="450" y2="770" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="480" y="745" text-anchor="middle" font-size="11" fill="#333333">JDBC</text>
+
+  <!-- Backend <-> AI Model -->
+  <line x1="720" y1="725" x2="830" y2="770" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="820" y="745" text-anchor="middle" font-size="11" fill="#333333">API Call</text>
+
+  <!-- Legend -->
+  <g transform="translate(1000,600)">
+    <rect x="0" y="0" width="20" height="12" fill="#DAE8FC" stroke="#6C8EBF"/>
+    <text x="26" y="10" font-size="10" fill="#333333">User / I-O</text>
+    <rect x="0" y="18" width="20" height="12" fill="#BBDEFB" stroke="#1565C0"/>
+    <text x="26" y="28" font-size="10" fill="#333333">Controller</text>
+    <rect x="0" y="36" width="20" height="12" fill="#FFE0B2" stroke="#D08A2A"/>
+    <text x="26" y="46" font-size="10" fill="#333333">Power ctrl</text>
+    <rect x="0" y="54" width="20" height="12" fill="#FFF2CC" stroke="#D6B656"/>
+    <text x="26" y="64" font-size="10" fill="#333333">Charging port</text>
+    <rect x="0" y="72" width="20" height="12" fill="#E1D5E7" stroke="#9673A6"/>
+    <text x="26" y="82" font-size="10" fill="#333333">Network</text>
+    <rect x="0" y="90" width="20" height="12" fill="#D5E8D4" stroke="#4C9A5B"/>
+    <text x="26" y="100" font-size="10" fill="#333333">Backend / Data</text>
+  </g>
+</svg>

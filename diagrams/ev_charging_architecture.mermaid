@@ -1,0 +1,57 @@
+flowchart TD
+    subgraph USER["👤 User Interaction"]
+        A[EV User]
+        B[RFID Reader]
+    end
+
+    subgraph HW["🔧 Hardware / Embedded Layer"]
+        C[ESP32 Microcontroller]
+        D[OLED Display]
+        E1[Current Sensor 1]
+        E2[Current Sensor 2]
+    end
+
+    subgraph POWER["⚡ Power Delivery"]
+        F[Relay Module]
+        G1[Charging Port 1]
+        G2[Charging Port 2]
+    end
+
+    subgraph NET["📶 Connectivity"]
+        H[WiFi Module]
+    end
+
+    subgraph CLOUD["☁️ Cloud / Backend Layer"]
+        I[Spring Boot Backend<br/>REST API]
+        J[(MySQL Database)]
+        K[AI Model - Python<br/>Charging Optimization]
+    end
+
+    A -- "Taps Card" --> B
+    B -- "UID Data (UART)" --> C
+    C -- "Status / Info" --> D
+    E1 -- "Current Reading" --> C
+    E2 -- "Current Reading" --> C
+    C -- "Control Signal" --> F
+    F -- "Power ON/OFF" --> G1
+    F -- "Power ON/OFF" --> G2
+    G1 -.->|Measures| E1
+    G2 -.->|Measures| E2
+    C -- "Sends Data" --> H
+    H <-->|HTTP / REST API| I
+    I <-->|JDBC| J
+    I <-->|API Call / Prediction| K
+
+    classDef user fill:#DAE8FC,stroke:#6C8EBF,color:#1A1A1A
+    classDef hw fill:#BBDEFB,stroke:#1565C0,color:#1A1A1A
+    classDef power fill:#FFE0B2,stroke:#D08A2A,color:#1A1A1A
+    classDef port fill:#FFF2CC,stroke:#D6B656,color:#1A1A1A
+    classDef net fill:#E1D5E7,stroke:#9673A6,color:#1A1A1A
+    classDef cloud fill:#D5E8D4,stroke:#4C9A5B,color:#1A1A1A
+
+    class A,B user
+    class C,D,E1,E2 hw
+    class F power
+    class G1,G2 port
+    class H net
+    class I,J,K cloud
