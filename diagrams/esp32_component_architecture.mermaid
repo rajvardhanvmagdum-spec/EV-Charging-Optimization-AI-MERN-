@@ -1,0 +1,73 @@
+flowchart TD
+    subgraph POWER["Power Supply"]
+        PWR[5V Adapter / USB]
+    end
+
+    subgraph CTRL["Main Controller"]
+        ESP[ESP32 DevKit V1 - 30 Pin]
+    end
+
+    subgraph AUTH["Authentication & Display"]
+        RFID[RFID RC522 Module]
+        CARD[RFID Cards / Tags]
+        OLED[0.96 inch OLED - I2C]
+    end
+
+    subgraph CHARGE["Charging Control"]
+        RELAY[2-Channel Relay Module]
+        PORT1[Charging Port 1]
+        PORT2[Charging Port 2]
+    end
+
+    subgraph MON["Monitoring"]
+        CUR1[ACS712 Current Sensor 1]
+        CUR2[ACS712 Current Sensor 2]
+        VOLT1[Voltage Sensor 1]
+        VOLT2[Voltage Sensor 2]
+        TEMP[DS18B20 / DHT22 Temp Sensor]
+    end
+
+    subgraph FEED["Indicators / Feedback"]
+        LEDG[Green LEDs x2 - Charging]
+        LEDR[Red LEDs x2 - Busy / Fault]
+        BUZZ[Buzzer - Scan / Error]
+    end
+
+    PWR -->|Powers| ESP
+
+    CARD -.->|Tap| RFID
+    RFID -->|UID via SPI| ESP
+    ESP -->|Status, ID, AI tip via I2C| OLED
+
+    ESP -->|Control signal| RELAY
+    RELAY -->|Switches ON/OFF| PORT1
+    RELAY -->|Switches ON/OFF| PORT2
+
+    PORT1 -.->|Measures| CUR1
+    PORT2 -.->|Measures| CUR2
+    PORT1 -.->|Measures| VOLT1
+    PORT2 -.->|Measures| VOLT2
+
+    CUR1 -->|Analog reading| ESP
+    CUR2 -->|Analog reading| ESP
+    VOLT1 -->|Analog reading| ESP
+    VOLT2 -->|Analog reading| ESP
+    TEMP -->|Overheat detect| ESP
+
+    ESP -->|Charging state| LEDG
+    ESP -->|Fault / busy state| LEDR
+    ESP -->|Alert| BUZZ
+
+    classDef power fill:#FAEEDA,stroke:#854F0B,color:#412402
+    classDef ctrl fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    classDef auth fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    classDef charge fill:#FAECE7,stroke:#993C1D,color:#4A1B0C
+    classDef mon fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    classDef feed fill:#EAF3DE,stroke:#3B6D11,color:#173404
+
+    class PWR power
+    class ESP ctrl
+    class RFID,CARD,OLED auth
+    class RELAY,PORT1,PORT2 charge
+    class CUR1,CUR2,VOLT1,VOLT2,TEMP mon
+    class LEDG,LEDR,BUZZ feed
