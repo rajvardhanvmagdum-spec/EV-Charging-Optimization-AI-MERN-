@@ -1,0 +1,64 @@
+erDiagram
+    Users ||--o{ Charging_Sessions : "has"
+    Charging_Stations ||--o{ Charging_Ports : "contains"
+    Charging_Ports ||--o{ Charging_Sessions : "used in"
+    Charging_Sessions ||--o{ Sensor_Data : "generates"
+    Charging_Sessions ||--|| AI_Predictions : "has"
+
+    Users {
+        ObjectId _id PK
+        string fullName
+        string email
+        string phoneNumber
+        string rfidCardId
+        string vehicleNumber
+        string password
+        date createdAt
+    }
+
+    Charging_Stations {
+        ObjectId _id PK
+        string stationName
+        string location
+        number totalPorts
+        number availablePorts
+        string status
+    }
+
+    Charging_Ports {
+        ObjectId _id PK
+        ObjectId stationId FK
+        number portNumber
+        string portStatus
+        string relayStatus
+    }
+
+    Charging_Sessions {
+        ObjectId _id PK
+        ObjectId userId FK
+        ObjectId portId FK
+        date startTime
+        date endTime
+        number chargingDuration
+        number energyConsumed
+        number totalCost
+        string sessionStatus
+    }
+
+    Sensor_Data {
+        ObjectId _id PK
+        ObjectId sessionId FK
+        number current
+        number voltage
+        number temperature
+        date timestamp
+    }
+
+    AI_Predictions {
+        ObjectId _id PK
+        ObjectId sessionId FK
+        ObjectId recommendedPort FK
+        number estimatedWaitTime
+        number confidenceScore
+        date predictionTime
+    }
